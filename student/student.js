@@ -3,7 +3,7 @@ const db = require("../dbconnection/db");
 
 module.exports = {
   addStudent: (data) => {
-    return new Promise((resolve, reject) => {
+    return new promise((resolve, reject) => {
       console.log(data);
       db.query(
         `INSERT INTO student (name, class) VALUES ?`,
@@ -99,7 +99,7 @@ module.exports = {
   },
 
  addtask: (letter) => {
-  return new Promise((resolve, reject) => {
+  return new promise((resolve, reject) => {
   
     db.query(
        `INSERT INTO letter (addletter,flag) VALUES ('${letter}', 'false')`,
