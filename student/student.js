@@ -1,4 +1,4 @@
-const promise = require("Promise");
+const promise = require("promise");
 const db = require("../dbconnection/db");
 
 module.exports = {
