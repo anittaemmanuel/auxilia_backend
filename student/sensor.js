@@ -1,25 +1,25 @@
-const promise = require("Promise");
+const promise = require("promise");
 const db = require("../dbconnection/db");
 
 module.exports={
-insertsensordata:(data)=>{
-      return new promise((resolve,reject)=>{
-        db.query(`INSERT INTO sensordata (heartrate,spo2) VALUES ?`,[data],(err,result)=>{
+// insertsensordata:(data)=>{
+//       return new promise((resolve,reject)=>{
+//         db.query(`INSERT INTO sensordata (heartrate,spo2) VALUES ?`,[data],(err,result)=>{
 
-          if(err){
-            reject(err);
-          }
-          else{
-            if(result.affectedRows>0){
-                  console.log("Inserted");
-            }
-            else{
-                  reject();
-            }
-          }
-        })
-      })
-},
+//           if(err){
+//             reject(err);
+//           }
+//           else{
+//             if(result.affectedRows>0){
+//                   console.log("Inserted");
+//             }
+//             else{
+//                   reject();
+//             }
+//           }
+//         })
+//       })
+// },
 
 dataview: () => {
   return new promise((resolve, reject) => {

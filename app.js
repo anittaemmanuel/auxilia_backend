@@ -33,14 +33,7 @@ app.use(function (req, res, next) {
   next(createError(404));
 });
 
-app.post('/main/:id',(req,res)=>{
-  const data=[[req.body.heartRate,req.body.spo2]];
- 
-  sensor.insertsensordata(data).then((data)=>{console.log(data.data)}).catch((err)=>{
-    console.log(err);
-  })
-  res.status(200).send("OK");
-})
+
 
 app.get("/404", function (req, res, next) {
   next(); // trigger a 404 since no other middleware will match /404 after this one, and we're not responding here
