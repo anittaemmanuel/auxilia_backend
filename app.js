@@ -25,36 +25,21 @@ app.use(cors());
 app.use("/", application);
 app.use("/node", nodemcu);
 
-const createError = () => {
-  console.log("set");
-};
 
+ // Error handler for 404 Not Found
 app.use(function (req, res, next) {
+  console.log(req.url);
   next(createError(404));
 });
 
-
-
-app.get("/404", function (req, res, next) {
-  next(); // trigger a 404 since no other middleware will match /404 after this one, and we're not responding here
-});
-app.get("/403", function (req, res, next) {
-  // trigger a 403 error
-  var err = new Error("not allowed!");
-  err.status = 403;
-  next(err);
-});
-app.get("/500", function (req, res, next) {
-  // trigger a generic (500) error
-  next(new Error("ERROR!"));
-});
+// error handler
 app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send("Something broke!");
-});
-app.use(function (req, res, next) {
-  console.log(req.method, req.url);
-  next();
+  // set locals, only providing error in development
+  res.locals.message = err.message;
+  res.locals.error = req.app.get("env") === "development" ? err : {};
+  // render the error page
+  res.status(err.status || 500);
+  res.status(500).json("error");
 });
 
 app.listen(port, () => {
