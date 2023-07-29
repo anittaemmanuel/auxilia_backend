@@ -191,17 +191,21 @@ application.get("/getTaskLetter", (req, res) => {
   sensor.dataview().then((data)=>{
     if(data.status=="success"){
       
-    console.log(data.heartrate);
-    console.log(data.spo2);
-    console.log(data.temp);
-      res.json({ heartrate: data.heartrate,spo2:data.spo2,temp:data.temp});
+    // console.log(data.heartrate);
+    // console.log(data.spo2);
+    // console.log(data.temp);
+      let heartrate="Failed_to fetching sensor data";
+      let spo2="Failed_to fetching sensor data";
+      let temp="Failed_to fetching sensor data";
+      res.json({ heartrate:heartrate,spo2:spo2,temp:temp});
     }
     else{
-      res.status(400).json("ERROR")
+      res.status(401).json("ERROR")
     }
   })
   .catch((err)=>{
     console.log(err);
+    res.status(500).json({ message: "Internal_server_error" })
 
   })
 })
