@@ -1,17 +1,18 @@
 var mysql = require("mysql");
 
 var connetion = mysql.createConnection({
-  host: "database-2.cqurizjk1fiz.ap-southeast-2.rds.amazonaws.com",
-  user: "admin",
-  password: "Letmepass123#",
-  port: 3306,
-  database: "Auxilia",
+  host: "127.0.0.1",
+  user: "root",
+  password: "",
+  database: "auxillia",
 });
-connetion.connect((err) => {
-  if (err) {
-    console.error(err);
-  } else {
-    console.log("Database_connected");
-  }
-});
+connetion.connect((err)=>{
+     if(err){
+    
+        console.error("Database_connected" + err);
+     }
+     else{
+        console.log("Database_connected");
+     }
+})
 module.exports = connetion;
