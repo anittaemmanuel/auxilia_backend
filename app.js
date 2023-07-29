@@ -12,7 +12,7 @@ var nodemcu = require("./routes/nodemcu");
 const sensor=require('./student/sensor');
 const port = process.env.PORT || 3000;
 
-app.get("/favicon.ico", (req, res) => res.status(204));
+
 
 app.use(logger("dev"));
 app.use(express.json());
